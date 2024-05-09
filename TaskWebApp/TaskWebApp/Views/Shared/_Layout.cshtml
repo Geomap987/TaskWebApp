@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @RenderSection("Style", false)
+    @RenderSection("Script", false)
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="../wwwroot/css/site.css">
+</head>
+<body>
+    <header>
+        <a href="/Home/Index"><span>← </span><span>MainPageLink</span></a>
+        @if ((!User?.Identity?.IsAuthenticated) ?? true)
+        {
+            <a class="login-link" href="/Auth/Login">Login</a>
+        } 
+        else
+        {
+            <a class="logout-link" href="/Auth/Logout">Logout</a>
+        }
+        <a href="/Home/Adminsection">Admin Section</a>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer><span>© 2024 MASHA</span></footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "dyrx+UCbfhuW53E973XdsLD7l0Z6Mh2VP+0z+J05iIYDibOxExdybECyaUhf33VbhJK49ZFdasRlaEVVgmWqWw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\geoma\\dev\\dotnetproject\\TaskWebApp\\TaskWebApp.E2ETests\\TaskWebApp.E2ETests.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\geoma\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.8.0\\microsoft.testplatform.objectmodel.17.8.0.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\microsoft.testplatform.testhost\\17.8.0\\microsoft.testplatform.testhost.17.8.0.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\nuget.frameworks\\6.5.0\\nuget.frameworks.6.5.0.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\nunit\\4.0.1\\nunit.4.0.1.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\selenium.webdriver\\4.20.0\\selenium.webdriver.4.20.0.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\selenium.webdriver.chromedriver\\124.0.6367.15500\\selenium.webdriver.chromedriver.124.0.6367.15500.nupkg.sha512",
+    "C:\\Users\\geoma\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
