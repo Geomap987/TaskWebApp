@@ -20,7 +20,15 @@
             @Html.ValidationMessageFor(x => x.Description)
 
             <label class="add-form__dropdown-label">@TaskWebApp.LocalizationFiles.TaskTracker.AddTaskPriority</label>
-            @Html.DropDownListFor(x => x.Priority, new SelectList(Model.PriorityOptions.Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() }), "Value", "Text"), new { placeholder = "Приоритет", @class = "add-form__dropdown" })
+            @Html.DropDownListFor(x => x.Priority, 
+                new SelectList(Model.PriorityOptions.Select(p => 
+                    new SelectListItem { Value = p.ToString(), Text = p.ToString() }), "Value", "Text"), 
+                    new { placeholder = "Приоритет", @class = "add-form__dropdown" })
+
+            <label class="add-form__dropdown-label">@TaskWebApp.LocalizationFiles.TaskTracker.AddTaskAssignees</label>
+            <label class="add-form__dropdown-tooltip">@TaskWebApp.LocalizationFiles.TaskTracker.AddTaskAssigneesToolTip</label>
+            @Html.ListBoxFor(x => x.SelectedAssigneeIds, new SelectList(Model.AvailableAssignees, "Id", "Name"), new { @class = "add-form__dropdown add-form__dropdown_multiple", multiple = "multiple" })
+            @Html.ValidationMessageFor(x => x.SelectedAssigneeIds)
 
             <input type="submit" value="@TaskWebApp.LocalizationFiles.TaskTracker.UpdateTaskFormButtonText" class="add-form__button" />
 

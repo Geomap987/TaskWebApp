@@ -16,6 +16,8 @@ namespace TaskWebApp.Models
         public string? Description { get; set; }
         public int Priority { get; set; }
         public List<int>? PriorityOptions { get; set; }
+        public List<int> SelectedAssigneeIds { get; set; } = new List<int>();
+        public List<UserViewModel> AvailableAssignees { get; set; } = new List<UserViewModel>();
 
     }
 }

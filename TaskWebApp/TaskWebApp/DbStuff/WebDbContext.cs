@@ -18,7 +18,11 @@ namespace TaskWebApp.DbStuff
             builder.Entity<User>()
                 .HasMany(user => user.OwnedTasks)
                 .WithOne(taskInfo => taskInfo.Owner)
-                .OnDelete(DeleteBehavior.NoAction); 
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<User>()
+                .HasMany(user => user.AssignedTasks)
+                .WithMany(taskInfo => taskInfo.Assignees);
                   
         }
     }

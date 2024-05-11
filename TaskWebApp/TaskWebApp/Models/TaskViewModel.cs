@@ -1,4 +1,6 @@
-﻿namespace TaskWebApp.Models
+﻿using TaskWebApp.DbStuff.Models;
+
+namespace TaskWebApp.Models
 {
     public class TaskViewModel
     {
@@ -7,6 +9,7 @@
         public string? Description { get; set; }
         public int Priority { get; set; }
         public string? Owner { get; set; }
+        public List<User>? Assignees { get; set; } = new List<User>();
         public bool CanDelete { get; set; }
         public string GetImageSource()
         {

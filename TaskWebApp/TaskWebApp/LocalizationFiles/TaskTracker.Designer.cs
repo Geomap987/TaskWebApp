@@ -70,6 +70,24 @@ namespace TaskWebApp.LocalizationFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Task Assignees.
+        /// </summary>
+        public static string AddTaskAssignees {
+            get {
+                return ResourceManager.GetString("AddTaskAssignees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To add several assignees hold down the Ctrl key (or &quot;Cmd&quot; for Mac).
+        /// </summary>
+        public static string AddTaskAssigneesToolTip {
+            get {
+                return ResourceManager.GetString("AddTaskAssigneesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add task.
         /// </summary>
         public static string AddTaskButtonText {
@@ -129,6 +147,15 @@ namespace TaskWebApp.LocalizationFiles {
         public static string CardAssignee {
             get {
                 return ResourceManager.GetString("CardAssignee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to not assigned.
+        /// </summary>
+        public static string CardNotAssigned {
+            get {
+                return ResourceManager.GetString("CardNotAssigned", resourceCulture);
             }
         }
         

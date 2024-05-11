@@ -9,5 +9,7 @@
 
         public string? PreferLocale { get; set; }
         public virtual List<TaskInfo>? OwnedTasks { get; set; }
+
+        public virtual List<TaskInfo>? AssignedTasks { get; set; }
     }
 }

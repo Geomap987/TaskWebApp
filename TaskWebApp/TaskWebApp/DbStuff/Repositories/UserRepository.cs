@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskWebApp.DbStuff.Models;
+using TaskWebApp.DbStuff.Models.DTOs;
 
 namespace TaskWebApp.DbStuff.Repositories
 {
@@ -10,6 +11,21 @@ namespace TaskWebApp.DbStuff.Repositories
         {
         }
 
+        public List<UserBasicInfo> GetAllUsersBasicInfo()
+        {
+            return _entyties
+                .Select(user => new UserBasicInfo
+                {
+                    Id = user.Id,
+                    Name = user.Login
+                })
+                .ToList();
+        }
+
+        public List<User> GetUsersByIds(List<int> ids)
+        {
+            return _entyties.Where(user => ids.Contains(user.Id)).ToList();
+        }
         public bool AnyUserWithName(string name)
         {
             return _entyties.Any(x => x.Login == name);

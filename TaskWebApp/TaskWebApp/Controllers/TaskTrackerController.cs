@@ -5,6 +5,7 @@ using TaskWebApp.DbStuff;
 using TaskWebApp.Models;
 using TaskWebApp.Services;
 using Microsoft.AspNetCore.Authorization;
+using TaskWebApp.DbStuff.Models.DTOs;
 
 namespace TaskWebApp.Controllers
 {
@@ -14,12 +15,14 @@ namespace TaskWebApp.Controllers
         private TaskRepository _taskRepository;
         private AuthService _authService;
         private TaskPermissions _taskPermissions;
+        private UserRepository _userRepository;
 
-        public TaskTrackerController(TaskRepository taskRepository, AuthService authService, TaskPermissions taskPermissions)
+        public TaskTrackerController(TaskRepository taskRepository, AuthService authService, TaskPermissions taskPermissions, UserRepository userRepository)
         {
             _taskRepository = taskRepository;
             _authService = authService;
             _taskPermissions = taskPermissions;
+            _userRepository = userRepository;
         }
 
         [Authorize]
@@ -36,6 +39,7 @@ namespace TaskWebApp.Controllers
                     Description = dbTask.Description,
                     Priority = dbTask.Priority,
                     Owner = dbTask.Owner?.Login ?? "",
+                    Assignees = dbTask.Assignees,
                     CanDelete = _taskPermissions.CanDeleteTask(dbTask)
                 };
             }).ToList();
@@ -48,7 +52,11 @@ namespace TaskWebApp.Controllers
         {
             var viewModel = new AddTaskViewModel
             {
-                PriorityOptions = new List<int> { 1, 2, 3 }
+                PriorityOptions = new List<int> { 1, 2, 3 },
+                AvailableAssignees = _userRepository
+                .GetAllUsersBasicInfo()
+                .Select(u => new UserViewModel { Id = u.Id, Name = u.Name })
+            .ToList()
             };
             return View(viewModel);
         }
@@ -60,6 +68,9 @@ namespace TaskWebApp.Controllers
             if (!ModelState.IsValid)
             {
                 taskViewModel.PriorityOptions = new List<int> { 1, 2, 3 };
+                taskViewModel.AvailableAssignees = _userRepository.GetAllUsersBasicInfo()
+                    .Select(u => new UserViewModel { Id = u.Id, Name = u.Name })
+                    .ToList();
                 return View(taskViewModel);
             }
 
@@ -68,7 +79,8 @@ namespace TaskWebApp.Controllers
                 Name = taskViewModel.Name,
                 Description = taskViewModel.Description,
                 Priority = taskViewModel.Priority,
-                Owner = _authService.GetCurrentUser()
+                Owner = _authService.GetCurrentUser(),
+                Assignees = _userRepository.GetUsersByIds(taskViewModel.SelectedAssigneeIds)
             };
 
             _taskRepository.AddTask(task);
@@ -87,7 +99,11 @@ namespace TaskWebApp.Controllers
                 Name = dbTask.Name,
                 Description = dbTask.Description,
                 Priority = dbTask.Priority,
-                PriorityOptions = new List<int> { 1, 2, 3 }
+                PriorityOptions = new List<int> { 1, 2, 3 },
+                AvailableAssignees = _userRepository
+                .GetAllUsersBasicInfo()
+                .Select(u => new UserViewModel { Id = u.Id, Name = u.Name })
+            .ToList()
 
             };
             return View(viewModel);
@@ -100,6 +116,10 @@ namespace TaskWebApp.Controllers
             if (!ModelState.IsValid)
             {
                 taskViewModel.PriorityOptions = new List<int> { 1, 2, 3 };
+                taskViewModel.AvailableAssignees = _userRepository
+                .GetAllUsersBasicInfo()
+                .Select(u => new UserViewModel { Id = u.Id, Name = u.Name })
+            .ToList();
                 return View(taskViewModel);
             }
 

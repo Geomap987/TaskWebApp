@@ -14,6 +14,7 @@ namespace TaskWebApp.DbStuff.Repositories
         {
             return _entyties
                 .Include(x => x.Owner)
+                .Include(x => x.Assignees)
                 .Take(maxCount)
                 .ToList();
         }

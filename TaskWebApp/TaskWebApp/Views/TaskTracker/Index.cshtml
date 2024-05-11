@@ -32,7 +32,7 @@
                     <h3 class="photo-grid__title"><span></span>@card.Name</h3>
                     <h4 class="photo-grid__description">@card.Description</h4>
                     <h4 class="photo-grid__owner">@TaskWebApp.LocalizationFiles.TaskTracker.CardOwner @card.Owner</h4>
-                    <h4 class="photo-grid__owner">@TaskWebApp.LocalizationFiles.TaskTracker.CardOwner @card.Owner</h4>
+                    <h4 class="photo-grid__owner">@TaskWebApp.LocalizationFiles.TaskTracker.CardAssignee@(card.Assignees != null && card.Assignees.Any() ? " " + string.Join(", ", card.Assignees.Select(a => a.Name)) : " " + TaskWebApp.LocalizationFiles.TaskTracker.CardNotAssigned)</h4>
                 </div>
             </article>
         }

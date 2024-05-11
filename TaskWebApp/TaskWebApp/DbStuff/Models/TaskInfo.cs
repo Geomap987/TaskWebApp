@@ -6,5 +6,7 @@
         public string Description { get; set; }
         public int Priority { get; set; }
         public virtual User? Owner { get; set; }
+
+        public virtual List<User>? Assignees { get; set; }
     }
 }

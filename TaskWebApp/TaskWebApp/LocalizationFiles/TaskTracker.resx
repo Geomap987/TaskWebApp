@@ -120,6 +120,12 @@
   <data name="AccessDenied" xml:space="preserve">
     <value>Sorry, you don't have access to this page...</value>
   </data>
+  <data name="AddTaskAssignees" xml:space="preserve">
+    <value>Add Task Assignees</value>
+  </data>
+  <data name="AddTaskAssigneesToolTip" xml:space="preserve">
+    <value>To add several assignees hold down the Ctrl key (or "Cmd" for Mac)</value>
+  </data>
   <data name="AddTaskButtonText" xml:space="preserve">
     <value>Add task</value>
   </data>
@@ -140,6 +146,9 @@
   </data>
   <data name="CardAssignee" xml:space="preserve">
     <value>Assignee:</value>
+  </data>
+  <data name="CardNotAssigned" xml:space="preserve">
+    <value>not assigned</value>
   </data>
   <data name="CardOwner" xml:space="preserve">
     <value>Owner:</value>
