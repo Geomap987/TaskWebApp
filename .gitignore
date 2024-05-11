@@ -1,0 +1,13 @@
+# Ignore Visual Studio temporary files and build output
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.log
+.vs/
+
+# Ignore all files in the node_modules/ directory
+node_modules/
+
+# Ignore macOS system files
+.DS_Store

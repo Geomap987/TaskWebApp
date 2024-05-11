@@ -7,7 +7,7 @@
         public string? Password { get; set; }
         public string? Login { get; set; }
 
-        public string PreferLocale { get; set; }
+        public string? PreferLocale { get; set; }
         public virtual List<TaskInfo>? OwnedTasks { get; set; }
     }
 }

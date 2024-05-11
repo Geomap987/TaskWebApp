@@ -1,6 +1,7 @@
 using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using TaskWebApp.Controllers;
+using TaskWebApp.CustomMiddlewares;
 using TaskWebApp.DbStuff;
 using TaskWebApp.DbStuff.Repositories;
 using TaskWebApp.Services;
@@ -45,6 +46,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<CustomLocalizationMiddleware>();
 
 
 app.MapControllerRoute(

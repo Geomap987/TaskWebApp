@@ -1,35 +1,74 @@
 html {
     color: white;
     font-family: 'Courier New', Sans-serif, Arial;
-    width: 100vw;
     height: 100vh;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: linear-gradient(200deg, #4c376a, #000000, #1c285c);
     background-size: 400% 400%;
     animation: Gradient 15s ease infinite;
 }
 
 header {
-    width: 100%;
+    width: 96%;
     height: 10%;
+    margin: 0 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-    header a {
-        color: white;
-        text-decoration: none;
-        margin-left: 3%;
-    }
+.link-container {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-between;
+}
+
+.link-container_right {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    align-items:end;
+}
+
+
+.username-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 35px;
+}
+
+.username-text {
+    line-height: 35px;
+    margin-left: 5px;
+}
+
+.login-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.header-link {
+    color: white;
+    text-decoration: none;
+    transition: font-weight 1s, opacity 1s;
+}
+
+.header-link:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: 96%;
+    margin: 0 2%;
     min-height: 80%;
 }
 
@@ -58,6 +97,7 @@ main {
 
 
 .photo-grid {
+    width: 100%;
     padding: 30px;
     display: flex;
 }
@@ -66,7 +106,7 @@ main {
 .photo-grid__container {
     display: grid;
     margin: auto;
-    grid-template-columns: repeat(5, 282px);
+    grid-template-columns: repeat(4, 282px);
     row-gap: 30px;
     column-gap: 30px;
 }
@@ -79,7 +119,7 @@ main {
     border-radius: 10px;
     box-sizing: border-box;
     position: relative;
-    min-height: 282px;
+    height: 340px;
 }
 
 .photo-grid__card_highlight {
@@ -175,27 +215,40 @@ main {
 
 .photo-grid__title {
     width: 100%;
-    height: 20%;
+    height: 15%;
     text-align: center;
     white-space: break-spaces;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 auto;
     font-weight: 900;
-    font-size: 20px;
-    line-height: 22px;
+    font-size: 18px;
+    line-height: 20px;
 }
 
 .photo-grid__description {
     width: 100%;
-    height: 80%;
+    height: 65%;
     text-align: left;
     overflow: clip;
     white-space: pre-wrap;
-    margin: 5% auto 0;
+    margin: 5% auto;
     font-weight: 900;
     font-size: 16px;
     line-height: 18px;
+}
+
+.photo-grid__owner {
+    width: 100%;
+    height: 10%;
+    text-align: left;
+    overflow: clip;
+    white-space: pre-wrap;
+    margin: 0 auto;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
 }
 
 .add-form {
@@ -204,6 +257,10 @@ main {
     height: 450px;
     width: 50%;
     margin: 0 auto
+}
+
+.add-form_login {
+    height: 350px;
 }
 
 .add-form__container {
@@ -219,10 +276,12 @@ main {
     animation: shimmer 5s infinite;
 }
 
+
 .add-form__title {
     color: white;
     margin: 20px auto;
     text-align: center;
+    width: 80%;
 }
 
 .add-form__form {
@@ -231,6 +290,14 @@ main {
     justify-content: center;
     height: 100%;
     width: 100%;
+}
+
+.add_form__form_login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
 }
 
 .add-form__input {
@@ -242,6 +309,14 @@ main {
     border: white 1px solid;
     border-radius: 5px;
     background-color: transparent;
+}
+
+.add-form__input_login {
+    height: 15%;
+}
+
+.add-form__input::placeholder {
+    margin-left: 5px;
 }
 
 .add-form__dropdown {

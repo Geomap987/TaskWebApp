@@ -8,7 +8,7 @@
 <section class="add-form">
     <div class="add-form__container">
         <button class="delete-icon delete-icon_white"><a href="/TaskTracker/Index">&#10006</a></button>
-        <h3 class="add-form__title">AddTaskFormTitle</h3>
+        <h3 class="add-form__title">@TaskWebApp.LocalizationFiles.TaskTracker.AddTaskFormTitle</h3>
 
         <form action="updateTask" method="post" class="add-form__form">
             <input type="hidden" name="id" value="@Model.Id">
@@ -19,10 +19,10 @@
             @Html.TextAreaFor(x => x.Description, new { placeholder = Model.Description, @class = "add-form__input add-form__input_description" })
             @Html.ValidationMessageFor(x => x.Description)
 
-            <label class="add-form__dropdown-label">AddTaskPriority</label>
+            <label class="add-form__dropdown-label">@TaskWebApp.LocalizationFiles.TaskTracker.AddTaskPriority</label>
             @Html.DropDownListFor(x => x.Priority, new SelectList(Model.PriorityOptions.Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() }), "Value", "Text"), new { placeholder = "Приоритет", @class = "add-form__dropdown" })
 
-            <input type="submit" value="UpdateTaskFormButtonText" class="add-form__button" />
+            <input type="submit" value="@TaskWebApp.LocalizationFiles.TaskTracker.UpdateTaskFormButtonText" class="add-form__button" />
 
         </form>
 

@@ -52,11 +52,11 @@ namespace TaskWebApp.DbStuff.Repositories
         //    return true;
         //}
 
-        //public void SwitchLocal(int userId, string locale)
-        //{
-        //    var user = GetById(userId);
-        //    user.PreferLocale = locale;
-        //    _context.SaveChanges();
-        //}
+        public void SwitchLocal(int userId, string locale)
+        {
+            var user = GetById(userId);
+            user.PreferLocale = locale;
+            _context.SaveChanges();
+        }
     }
 }

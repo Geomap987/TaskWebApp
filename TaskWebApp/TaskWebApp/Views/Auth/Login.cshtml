@@ -6,18 +6,20 @@
     <link href="~/css/site.css" rel="stylesheet" />
 }
 
-<div>
-    <form method="post">
-        <div>
-            @Html.TextBoxFor(x => x.UserName)
+
+<section class="add-form add-form_login">
+    <div class="add-form__container">
+        <h3 class="add-form__title">@TaskWebApp.LocalizationFiles.TaskTracker.LoginTitle</h3>
+        <form method="post" class="add_form__form_login">
+            
+            @Html.TextBoxFor(x => x.UserName, new { placeholder = @TaskWebApp.LocalizationFiles.TaskTracker.LoginName, @class = "add-form__input add-form__input_login" })
             @Html.ValidationMessageFor(x => x.UserName)
-        </div>
-        <div>
-            @Html.TextBoxFor(x => x.Password, new { @type = "password" })
+            
+            @Html.TextBoxFor(x => x.Password, new { placeholder = @TaskWebApp.LocalizationFiles.TaskTracker.LoginPassword, @type = "password", @class = "add-form__input add-form__input_login" })
             @Html.ValidationMessageFor(x => x.Password)
-        </div>
-        <div>
-            <input type="submit" value="Login" />
-        </div>
-    </form>
-</div>
+                       
+            <input class="add-form__button" type="submit" value=@TaskWebApp.LocalizationFiles.TaskTracker.LoginButton />
+            
+        </form>
+    </div>
+</section>

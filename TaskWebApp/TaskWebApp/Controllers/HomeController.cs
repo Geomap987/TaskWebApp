@@ -1,12 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TaskWebApp.Controllers.CustomAuthAttributes;
+using TaskWebApp.DbStuff.Repositories;
 using TaskWebApp.Models;
+using TaskWebApp.Services;
 
 namespace TaskWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private AuthService _authService;
+        private UserRepository _userRepository;
+
+        public HomeController(AuthService authService, UserRepository userRepository)
+        {
+            _authService = authService;
+            _userRepository = userRepository;
+        }
         public IActionResult Index()
         {
 
@@ -18,6 +29,14 @@ namespace TaskWebApp.Controllers
         {
 
             return View();
+        }
+
+        [Authorize]
+        public IActionResult SwitchLocale(string locale)
+        {
+            var userId = _authService.GetCurrentUserId().Value;
+            _userRepository.SwitchLocal(userId, locale);
+            return RedirectToAction("Index");
         }
 
 

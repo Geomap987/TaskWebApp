@@ -7,20 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Task Tracker</title>
-    <link rel="stylesheet" href="../wwwroot/css/site.css">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/switchLang.js"></script>
 </head>
 <body>
     <header>
-        <a href="/Home/Index"><span>← </span><span>MainPageLink</span></a>
+        <div class="link-container">
+            <a class="header-link" href="/Home/Index"><span>← </span><span>@TaskWebApp.LocalizationFiles.TaskTracker.MainPageLink</span></a>
+            <a class="header-link" href="/Home/Adminsection">@TaskWebApp.LocalizationFiles.TaskTracker.AdminSection</a>
+            <div class="lang-container">
+                <div class="header-link lang" data-langcode="ru-RU">ru-RU</div>
+                <div class="header-link lang" data-langcode="ru-RU">en-EN</div>
+            </div>
+        </div>
         @if ((!User?.Identity?.IsAuthenticated) ?? true)
         {
-            <a class="login-link" href="/Auth/Login">Login</a>
-        } 
+            <a class="header-link login-link" href="/Auth/Login">@TaskWebApp.LocalizationFiles.TaskTracker.LoginButton</a>
+        }
         else
         {
-            <a class="logout-link" href="/Auth/Logout">Logout</a>
+            <div class="link-container_right">
+                <div class="username-container">
+                    <img class="login-icon" src="https://media0.giphy.com/media/Tgxr8pn069Sf7mgv0e/giphy.gif?cid=ecf05e47eomc10ib8lngb0aecsa70cw47pvofqjyaye33t5z&ep=v1_gifs_related&rid=giphy.gif&ct=s" />
+                    <div class="username-text">@User.Claims.FirstOrDefault(c => c.Type == "name")?.Value</div>
+                </div>
+                <a class="header-link logout-link" href="/Auth/Logout">@TaskWebApp.LocalizationFiles.TaskTracker.LogoutButton</a>
+            </div>
+            
         }
-        <a href="/Home/Adminsection">Admin Section</a>
     </header>
     <main>
         @RenderBody()

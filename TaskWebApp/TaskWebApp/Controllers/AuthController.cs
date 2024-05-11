@@ -5,6 +5,7 @@ using System.Security.Claims;
 using TaskWebApp.DbStuff.Models;
 using TaskWebApp.Models.Auth;
 using TaskWebApp.DbStuff.Repositories;
+using TaskWebApp.Services;
 
 namespace TaskWebApp.Controllers
 {
@@ -19,44 +20,15 @@ namespace TaskWebApp.Controllers
             _userRepository = userRepository;
         }
 
-        //public async Task LoginWithGoogle()
-        //{
-
-        //    await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
-        //    {
-        //        RedirectUri = Url.Action("GoogleResponse")
-        //    });
-        //}
-
-        //public async Task<IActionResult> GoogleResponse()
-        //{
-        //    var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-        //    var claims = result.Principal.Identities.First().Claims.Select(claim => new Claim(claim.Type, claim.Value));
-
-        //    var userEmail = GetInfoFromClaims(claims, CLAIMS_EMAIL_GOOGLE);
-
-        //    var user = _userRepository.GetUserByEmail(userEmail);
-
-        //    if (user == null)
-        //    {
-        //        user = new User
-        //        {
-        //            Email = userEmail,
-        //            FirstName = GetInfoFromClaims(claims, CLAIMS_FIRSTNAME_GOOGLE),
-        //            LastName = GetInfoFromClaims(claims, CLAIMS_LASTNAME_GOOGLE),
-        //            AvatarUrl = GetInfoFromClaims(claims, CLAIMS_IMG_GOOGLE),
-        //        };
-        //        user.Id = _userRepository.Add(user);
-        //    }
-
-        //    SignInUser(user);
-
-        //    return RedirectToAction("Index", "Home");
-        //}
 
         [HttpGet]
         public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Deny()
         {
             return View();
         }
@@ -94,7 +66,7 @@ namespace TaskWebApp.Controllers
                 new Claim("id", user.Id.ToString()),
                 new Claim("name", user.Login ?? "user"),
                 new Claim("email", user.Email ?? ""),
-                //new Claim(AuthService.LOCALE_TYPE, user.PreferLocale),
+                new Claim(AuthService.LOCALE_TYPE, user.PreferLocale)
             };
 
             var identity = new ClaimsIdentity(claims, AUTH_KEY);

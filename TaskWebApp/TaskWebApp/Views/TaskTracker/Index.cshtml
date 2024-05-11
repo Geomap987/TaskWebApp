@@ -9,13 +9,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/TaskTracker/index.js"></script>
 }
-<button class="navigation-button"><a href="/TaskTracker/AddTask">AddTaskButtonText</a></button>
+<button class="navigation-button"><a href="/TaskTracker/AddTask">@TaskWebApp.LocalizationFiles.TaskTracker.AddTaskButtonText</a></button>
 <section class="photo-grid">
     <div class="photo-grid__container">
         <article class="photo-grid__card">
             <div class="photo-grid__text">
-                <h3 class="photo-grid__title">GreetingCardTitle</h3>
-                <h4 class="photo-grid__description">GreetingCardDescription</h4>
+                <h3 class="photo-grid__title">@TaskWebApp.LocalizationFiles.TaskTracker.GreetingCardTitle</h3>
+                <h4 class="photo-grid__description">@TaskWebApp.LocalizationFiles.TaskTracker.GreetingCardDescription</h4>
             </div>
         </article>
         @foreach (var card in Model)
@@ -29,9 +29,10 @@
                     <button class="delete-icon delete-icon_black"><a href="/TaskTracker/DeleteTask?id=@card.Id">&#10006</a></button>
                 }
                 <div class="photo-grid__text">
-                    <h3 class="photo-grid__title">@card.Name</h3>
+                    <h3 class="photo-grid__title"><span></span>@card.Name</h3>
                     <h4 class="photo-grid__description">@card.Description</h4>
-                    <h4 class="photo-grid__description">@card.Owner</h4>
+                    <h4 class="photo-grid__owner">@TaskWebApp.LocalizationFiles.TaskTracker.CardOwner @card.Owner</h4>
+                    <h4 class="photo-grid__owner">@TaskWebApp.LocalizationFiles.TaskTracker.CardOwner @card.Owner</h4>
                 </div>
             </article>
         }
