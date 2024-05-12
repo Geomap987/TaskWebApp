@@ -15,7 +15,8 @@
         <article class="photo-grid__card">
             <div class="photo-grid__text">
                 <h3 class="photo-grid__title">@TaskWebApp.LocalizationFiles.TaskTracker.GreetingCardTitle</h3>
-                <h4 class="photo-grid__description">@TaskWebApp.LocalizationFiles.TaskTracker.GreetingCardDescription</h4>
+                <h4 class="photo-grid__description">@Model[0].QuoteText</h4>
+                <h4 class="photo-grid__owner">@Model[0].QuoteAuthor</h4>
             </div>
         </article>
         @foreach (var card in Model)

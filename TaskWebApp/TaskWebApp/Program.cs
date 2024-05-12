@@ -5,6 +5,7 @@ using TaskWebApp.CustomMiddlewares;
 using TaskWebApp.DbStuff;
 using TaskWebApp.DbStuff.Repositories;
 using TaskWebApp.Services;
+using TaskWebApp.Services.ApiServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,11 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TaskRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<TaskPermissions>();
+
+builder.Services.AddHttpClient<QuotesApi>(client =>
+{
+    client.BaseAddress = new Uri("https://zenquotes.io/api/");
+});
 
 
 var app = builder.Build();

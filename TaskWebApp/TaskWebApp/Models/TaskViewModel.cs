@@ -25,5 +25,9 @@ namespace TaskWebApp.Models
                     return "https://media0.giphy.com/media/Tgxr8pn069Sf7mgv0e/giphy.gif?cid=ecf05e47eomc10ib8lngb0aecsa70cw47pvofqjyaye33t5z&ep=v1_gifs_related&rid=giphy.gif&ct=s";
             }
         }
+
+        public string? QuoteText { get; set; }
+
+        public string? QuoteAuthor { get; set; }
     }
 }

@@ -6,6 +6,8 @@ using TaskWebApp.Models;
 using TaskWebApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using TaskWebApp.DbStuff.Models.DTOs;
+using TaskWebApp.Services.ApiServices;
+using System.Text.Json;
 
 namespace TaskWebApp.Controllers
 {
@@ -16,19 +18,31 @@ namespace TaskWebApp.Controllers
         private AuthService _authService;
         private TaskPermissions _taskPermissions;
         private UserRepository _userRepository;
+        private QuotesApi _quotesApi;
 
-        public TaskTrackerController(TaskRepository taskRepository, AuthService authService, TaskPermissions taskPermissions, UserRepository userRepository)
+        public TaskTrackerController(TaskRepository taskRepository, AuthService authService, TaskPermissions taskPermissions, UserRepository userRepository, QuotesApi quotesApi)
         {
             _taskRepository = taskRepository;
             _authService = authService;
             _taskPermissions = taskPermissions;
             _userRepository = userRepository;
+            _quotesApi = quotesApi;
         }
 
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var a = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "name")?.Value ?? "Привет";
+            string quoteText = LocalizationFiles.TaskTracker.GreetingCardDescription;  
+            string quoteAuthor = "";
+            try
+            {
+                (quoteText, quoteAuthor) = await _quotesApi.GetRandomQuote();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to fetch quote: {ex.Message}");
+            }
+
             var dbTasks = _taskRepository.GetTasks();
             var viewModels = dbTasks.Select(dbTask =>
             {
@@ -40,7 +54,9 @@ namespace TaskWebApp.Controllers
                     Priority = dbTask.Priority,
                     Owner = dbTask.Owner?.Login ?? "",
                     Assignees = dbTask.Assignees,
-                    CanDelete = _taskPermissions.CanDeleteTask(dbTask)
+                    CanDelete = _taskPermissions.CanDeleteTask(dbTask),
+                    QuoteText = quoteText,
+                    QuoteAuthor = quoteAuthor
                 };
             }).ToList();
             return View(viewModels);
