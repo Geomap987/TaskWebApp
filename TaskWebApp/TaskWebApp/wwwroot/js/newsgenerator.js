@@ -4,13 +4,28 @@
 
 connection.on("ReceiveNews", function (newsJson) {
     console.log("News received:", newsJson);
-    const newsData = JSON.parse(newsJson);  // Assuming newsJson is a JSON string
-    const container = document.getElementById('news-container');
-    console.log("News received:", newsData)
-            // Clear previous news links
-    ;
+    const newsData = JSON.parse(newsJson);
+    localStorage.setItem('latestNews', newsJson);
+    updateNewsDisplay(newsJson);
+});
 
-            // Assume newsData is an array of news articles
+document.addEventListener("DOMContentLoaded", () => {
+    const storedNewsJson = localStorage.getItem('latestNews');
+    if (storedNewsJson) {
+        updateNewsDisplay(storedNewsJson);
+    }
+});
+
+connection.start()
+    .catch(function (err) {
+        console.error(err.toString());
+    });
+
+function updateNewsDisplay(newsJson) {
+    const newsData = JSON.parse(newsJson);
+    const container = document.getElementById('news-container');
+    container.innerHTML = '';
+
     newsData.data.forEach(article => {
         const description = article.description;
         const url = article.url;
@@ -21,14 +36,9 @@ connection.on("ReceiveNews", function (newsJson) {
         newsLink.style.textDecoration = 'none';
         newsLink.style.color = 'white';
         newsLink.style.margin = '20px';
-        newsLink.style.display = 'block'; 
+        newsLink.style.display = 'block';
 
         container.appendChild(newsLink);
-        });
-});
-
-connection.start()
-    .catch(function (err) {
-        console.error(err.toString());
     });
+}
 
