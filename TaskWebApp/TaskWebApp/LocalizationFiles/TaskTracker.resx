@@ -177,6 +177,9 @@
   <data name="MainPageLink" xml:space="preserve">
     <value>To the main page</value>
   </data>
+  <data name="NewsTitle" xml:space="preserve">
+    <value>Want to procrastinate? Here are some random news for you</value>
+  </data>
   <data name="UpdateTaskFormButtonText" xml:space="preserve">
     <value>Update task</value>
   </data>

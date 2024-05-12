@@ -241,6 +241,15 @@ namespace TaskWebApp.LocalizationFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Want to procrastinate? Here are some random news for you.
+        /// </summary>
+        public static string NewsTitle {
+            get {
+                return ResourceManager.GetString("NewsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update task.
         /// </summary>
         public static string UpdateTaskFormButtonText {

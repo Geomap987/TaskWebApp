@@ -28,11 +28,15 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TaskRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<TaskPermissions>();
+builder.Services.AddSignalR();
+builder.Services.AddHostedService<NewsService>();
+
 
 builder.Services.AddHttpClient<QuotesApi>(client =>
 {
     client.BaseAddress = new Uri("https://zenquotes.io/api/");
 });
+builder.Services.AddHttpClient<NewsService>();
 
 
 var app = builder.Build();
@@ -54,6 +58,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseMiddleware<CustomLocalizationMiddleware>();
+
+app.MapHub<NewsHub>("/newsHub");
 
 
 app.MapControllerRoute(

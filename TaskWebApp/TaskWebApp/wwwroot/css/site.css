@@ -94,7 +94,22 @@ main {
     .navigation-button:hover {
         box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
     }
+.news-container {
+    width: 50%;
+    margin: 0 3%;
+}
 
+.news-title {
+    font-size: 22px;
+    margin-top: 2%;
+}
+
+.news-link {
+    text-decoration: none;
+    color: white;
+    color: white;
+    margin: 20px;
+}
 
 .photo-grid {
     width: 100%;
@@ -227,7 +242,7 @@ main {
 }
 
 .photo-grid__description {
-    width: 100%;
+    width: 230px;
     height: 65%;
     text-align: left;
     overflow: auto;

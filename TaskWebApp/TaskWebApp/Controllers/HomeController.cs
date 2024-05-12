@@ -20,7 +20,6 @@ namespace TaskWebApp.Controllers
         }
         public IActionResult Index()
         {
-
             return View();
         }
 
