@@ -45,10 +45,15 @@ namespace TaskWebApp.Services
             return _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "name")?.Value ?? "Гость";
         }
 
+        public string GetCurrentUserRole()
+        {
+            return _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "role")?.Value ?? "";
+        }
+
 
         public bool IsAdmin()
         {
-            return GetCurrentUserName() == "admin";
+            return GetCurrentUserRole() == "admin";
         }
 
         public string GetCurrentUserLocale()

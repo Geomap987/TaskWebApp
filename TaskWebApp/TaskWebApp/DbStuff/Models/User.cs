@@ -8,8 +8,8 @@
         public string? Login { get; set; }
 
         public string? PreferLocale { get; set; }
+        public string? Role { get; set; }
         public virtual List<TaskInfo>? OwnedTasks { get; set; }
-
         public virtual List<TaskInfo>? AssignedTasks { get; set; }
     }
 }
