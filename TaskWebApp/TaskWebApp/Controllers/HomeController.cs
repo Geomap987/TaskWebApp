@@ -23,6 +23,7 @@ namespace TaskWebApp.Controllers
             return View();
         }
 
+        [Authorize]
         [AdminAccess]
         public IActionResult AdminSection()
         {
@@ -30,13 +31,13 @@ namespace TaskWebApp.Controllers
             return View();
         }
 
-        [Authorize]
-        public IActionResult SwitchLocale(string locale)
-        {
-            var userId = _authService.GetCurrentUserId().Value;
-            _userRepository.SwitchLocal(userId, locale);
-            return RedirectToAction("Index");
-        }
+        //[Authorize]
+        //public IActionResult SwitchLocale(string locale)
+        //{
+        //    var userId = _authService.GetCurrentUserId().Value;
+        //    _userRepository.SwitchLocal(userId, locale);
+        //    return RedirectToAction("Index");
+        //}
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

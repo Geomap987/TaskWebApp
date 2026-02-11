@@ -1,8 +1,5 @@
 ﻿$(document).ready(function () {
     $('.lang').click(function () {
-        $('.lang').removeClass('lang_highlight')
-        const lang = $(this).closest('.lang');
-        lang.toggleClass('lang_highlight');
 
         const local = $(this).text();
 

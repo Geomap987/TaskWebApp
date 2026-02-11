@@ -1,4 +1,5 @@
-﻿using TaskWebApp.DbStuff.Models;
+﻿using System.Diagnostics.CodeAnalysis;
+using TaskWebApp.DbStuff.Models;
 
 namespace TaskWebApp.Services
 {
@@ -12,7 +13,9 @@ namespace TaskWebApp.Services
         }
         public bool CanDeleteTask(TaskInfo task)
         {
-            return task.Owner is null || task.Owner?.Id == _authService.GetCurrentUserId();
+            bool isEvenMinute = DateTime.Now.Minute % 2 == 0;
+
+            return isEvenMinute && task.Owner?.Id == _authService.GetCurrentUserId();
         }
     }
 }
