@@ -45,7 +45,10 @@ builder.Services.AddHttpClient<NewsService>();
 
 var app = builder.Build();
 
-await DemoUserSeed.SeedAsync(app.Services);
+if (app.Environment.IsDevelopment())
+{
+    await DemoUserSeed.SeedAsync(app.Services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -16,18 +16,18 @@ namespace TaskWebApp.DbStuff.Seed
 
             await EnsureUserAsync(
                 db, hasher,
-                name: "Admin",
+                name: "Bob Johnson",
                 email: "admin@example.com",
-                login: "admin",
-                password: "123",
+                login: "admin_demo",
+                password: "Admin135!Demo",
                 isAdmin: true);
 
             await EnsureUserAsync(
                 db, hasher,
                 name: "Mary Johnson",
                 email: "maryjohnson@example.com",
-                login: "Mary",
-                password: "123",
+                login: "Mary_demo",
+                password: "Mary135!Demo",
                 isAdmin: false);
 
             await EnsureUserAsync(
@@ -35,7 +35,7 @@ namespace TaskWebApp.DbStuff.Seed
                 name: "Alex Johnson",
                 email: "alexjohnson@example.com",
                 login: "Alex",
-                password: "123",
+                password: "Alex135!Demo",
                 isAdmin: false);
 
             await db.SaveChangesAsync();
