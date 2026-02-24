@@ -13,9 +13,7 @@ namespace TaskWebApp.Services
         }
         public bool CanDeleteTask(TaskInfo task)
         {
-            bool isEvenMinute = DateTime.Now.Minute % 2 == 0;
-
-            return isEvenMinute && task.Owner?.Id == _authService.GetCurrentUserId();
+            return task.Owner?.Id == _authService.GetCurrentUserId();
         }
     }
 }

@@ -1,9 +1,12 @@
-using System.Data.Common;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 using TaskWebApp.Controllers;
 using TaskWebApp.CustomMiddlewares;
 using TaskWebApp.DbStuff;
+using TaskWebApp.DbStuff.Models;
 using TaskWebApp.DbStuff.Repositories;
+using TaskWebApp.DbStuff.Seed;
 using TaskWebApp.Services;
 using TaskWebApp.Services.ApiServices;
 
@@ -27,6 +30,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TaskRepository>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<TaskPermissions>();
 builder.Services.AddSignalR();
 builder.Services.AddHostedService<NewsService>();
@@ -40,6 +44,8 @@ builder.Services.AddHttpClient<NewsService>();
 
 
 var app = builder.Build();
+
+await DemoUserSeed.SeedAsync(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

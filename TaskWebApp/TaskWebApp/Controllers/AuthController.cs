@@ -66,7 +66,7 @@ namespace TaskWebApp.Controllers
                 new Claim("id", user.Id.ToString()),
                 new Claim("name", user.Login ?? "user"),
                 new Claim("email", user.Email ?? ""),
-                new Claim(AuthService.LOCALE_TYPE, user.PreferLocale),
+                new Claim(AuthService.LOCALE_TYPE, user.PreferLocale ?? "en-EN"),
                 new Claim("role", user.Role ?? "")
             };
 

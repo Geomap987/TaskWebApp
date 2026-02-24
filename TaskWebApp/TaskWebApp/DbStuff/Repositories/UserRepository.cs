@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskWebApp.DbStuff.Models;
 using TaskWebApp.DbStuff.Models.DTOs;
+using Microsoft.AspNetCore.Identity;
 
 namespace TaskWebApp.DbStuff.Repositories
 {
     public class UserRepository : BaseRepository<User>
     {
-
-        public UserRepository(WebDbContext context) : base(context)
+        private readonly IPasswordHasher<User> _passwordHasher;
+        public UserRepository(WebDbContext context, IPasswordHasher<User> passwordHasher) : base(context)
         {
+            _passwordHasher = passwordHasher;
         }
 
         public List<UserBasicInfo> GetAllUsersBasicInfo()
@@ -38,8 +40,14 @@ namespace TaskWebApp.DbStuff.Repositories
 
         public User? GetUserByLoginAndPassword(string login, string password)
         {
-            return _entyties
-                .FirstOrDefault(user => user.Login == login && user.Password!.Equals(password));
+            var user = _entyties.FirstOrDefault(u => u.Login == login);
+            if (user == null) return null;
+
+            var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash!, password);
+
+            return result == PasswordVerificationResult.Success
+                ? user
+                : null;
         }
 
 
