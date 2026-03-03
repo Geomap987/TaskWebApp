@@ -12,7 +12,8 @@ using TaskWebApp.Services.ApiServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=TaskApp; Integrated Security=True";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<WebDbContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddAuthentication(AuthController.AUTH_KEY)
     .AddCookie(AuthController.AUTH_KEY, option =>
@@ -45,7 +46,10 @@ builder.Services.AddHttpClient<NewsService>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+var seedEnabled = builder.Configuration.GetValue<bool?>("DemoSeed:Enabled")
+                 ?? app.Environment.IsDevelopment();
+
+if (seedEnabled)
 {
     await DemoUserSeed.SeedAsync(app.Services);
 }
