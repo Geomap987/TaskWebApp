@@ -153,8 +153,11 @@
   <data name="CardOwner" xml:space="preserve">
     <value>Owner:</value>
   </data>
+  <data name="GreetingCardAuthor" xml:space="preserve">
+    <value>Lao Tzu</value>
+  </data>
   <data name="GreetingCardDescription" xml:space="preserve">
-    <value>A journey of a thousand miles begins with a single step</value>
+    <value>A journey of a thousand miles begins with a single step.</value>
   </data>
   <data name="GreetingCardTitle" xml:space="preserve">
     <value>Hey there</value>
@@ -178,7 +181,7 @@
     <value>To the main page</value>
   </data>
   <data name="NewsTitle" xml:space="preserve">
-    <value>Want to procrastinate? Here are some random news for you</value>
+    <value>Need a quick break? Here are some news highlights</value>
   </data>
   <data name="UpdateTaskFormButtonText" xml:space="preserve">
     <value>Update task</value>

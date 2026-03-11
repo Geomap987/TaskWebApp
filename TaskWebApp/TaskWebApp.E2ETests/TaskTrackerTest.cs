@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using TaskWebApp.E2ETests.PageSelector;
 
 namespace TaskWebApp.E2ETests
@@ -11,8 +12,8 @@ namespace TaskWebApp.E2ETests
         public const string BASE_URL = "https://localhost:7131";
         public const string TASK_INDEX_URL = BASE_URL + "/TaskTracker/Index";
 
-        public const string ADMIN_NAME = "admin";
-        public const string ADMIN_PASSWORD = "123";
+        public const string ADMIN_NAME = "admin_demo";
+        public const string ADMIN_PASSWORD = "YOUR_PASSWORD_HERE";
 
         public const string TASK_NAME = "task1";
         public const string TASK_DESCRIPTION = "test description";
@@ -52,7 +53,7 @@ namespace TaskWebApp.E2ETests
             driver
                 .FindElement(TaskTrackerIndexPage.AddTaskButton)
                 .Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(4000);
 
             driver
                 .FindElement(TaskTrackerAddTaskPage.AddTaskNameInput)
@@ -64,7 +65,7 @@ namespace TaskWebApp.E2ETests
             driver
                .FindElement(TaskTrackerAddTaskPage.AddTaskSubmitButton)
                .Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(4000);
 
             var taskCardsCountFinal = driver.FindElements(TaskTrackerIndexPage.TaskCard).Count;
 

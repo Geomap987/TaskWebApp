@@ -12,7 +12,7 @@
 @{
     var hasCards = Model != null && Model.Any();
     var firstQuoteText = hasCards ? Model[0].QuoteText : TaskWebApp.LocalizationFiles.TaskTracker.GreetingCardDescription;
-    var firstQuoteAuthor = hasCards ? Model[0].QuoteAuthor : "";
+    var firstQuoteAuthor = hasCards ? Model[0].QuoteAuthor : TaskWebApp.LocalizationFiles.TaskTracker.GreetingCardAuthor;
 }
 <button class="navigation-button"><a href="/TaskTracker/AddTask">@TaskWebApp.LocalizationFiles.TaskTracker.AddTaskButtonText</a></button>
 <section class="photo-grid">

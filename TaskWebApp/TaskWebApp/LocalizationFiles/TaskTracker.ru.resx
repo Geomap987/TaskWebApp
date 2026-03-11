@@ -153,8 +153,11 @@
   <data name="CardOwner" xml:space="preserve">
     <value>Владелец:</value>
   </data>
+  <data name="GreetingCardAuthor" xml:space="preserve">
+    <value>Лао Цзы</value>
+  </data>
   <data name="GreetingCardDescription" xml:space="preserve">
-    <value>Даже путь в тысячу ли начинается с первого шага</value>
+    <value>Даже путь в тысячу ли начинается с первого шага.</value>
   </data>
   <data name="GreetingCardTitle" xml:space="preserve">
     <value>Привет!</value>
@@ -178,7 +181,7 @@
     <value>На главную страницу</value>
   </data>
   <data name="NewsTitle" xml:space="preserve">
-    <value>Прокрастинируешь? Вот тебе немного новостей</value>
+    <value>Нужно передохнуть? Вот немного новостей</value>
   </data>
   <data name="UpdateTaskFormButtonText" xml:space="preserve">
     <value>Обновить заметку</value>
